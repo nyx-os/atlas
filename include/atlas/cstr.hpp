@@ -28,7 +28,7 @@ constexpr size_t strcmp(const char *a, const char *b) {
 }
 
 constexpr bool isdigit(char c) { return c >= '0' && c <= '9'; }
-constexpr bool tolower(char c) { return c >= 'A' && c <= 'Z' ? c + 32 : c; }
+constexpr char tolower(char c) { return c >= 'A' && c <= 'Z' ? c + 32 : c; }
 
 } // namespace Atlas
 
