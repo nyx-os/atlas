@@ -20,7 +20,7 @@ test('all_tests',
        sources: test_sources,
        cpp_args: ['-g', '-fsanitize=address', '--coverage', '-DDEBUG_CHECKS=1'],
        link_args: ['-fsanitize=address', '--coverage'],
-       dependencies: [atlas, dependency('doctest')],
+       dependencies: [atlas_dep, dependency('doctest')],
        native: true)
  )
 
