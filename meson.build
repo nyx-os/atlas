@@ -3,6 +3,7 @@ project('atlas', 'cpp', default_options: ['cpp_std=c++20'])
 
 atlas_dep = declare_dependency(include_directories: include_directories('include'))
 
+if not meson.is_subproject()
 test_sources = files('tests/main.cpp', 'tests/option.cpp',
   'tests/result.cpp', 'tests/impl.cpp', 'tests/string_view.cpp',
   'tests/string.cpp', 'tests/iter.cpp', 'tests/array.cpp',
@@ -14,6 +15,7 @@ test_sources = files('tests/main.cpp', 'tests/option.cpp',
 
                     )
 
+
 test('all_tests',
      executable(
        'tests',
@@ -23,6 +25,8 @@ test('all_tests',
        dependencies: [atlas_dep, dependency('doctest')],
        native: true)
  )
+
+endif
 
 
 #deps = [
