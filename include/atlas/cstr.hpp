@@ -1,4 +1,6 @@
 #pragma once
+#include <stddef.h>
+#include <stdint.h>
 
 #if __has_include(<cstring>)
 #include <cstring>
