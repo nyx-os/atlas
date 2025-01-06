@@ -25,11 +25,11 @@ test('all_tests',
  )
 
 
-deps = [
-  atlas,
-  dependency('benchmark'),
-  dependency('absl_flat_hash_map'),
-]
+#deps = [
+ # atlas,
+  #dependency('benchmark'),
+  #dependency('absl_flat_hash_map'),
+#]
 
 #executable('bench', sources: ['benchmarks/main.cpp', 'tests/impl.cpp'],
 #           dependencies: deps, include_directories: include_directories('frigg/include'))
