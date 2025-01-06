@@ -1,7 +1,7 @@
 project('atlas', 'cpp', default_options: ['cpp_std=c++20'])
 
 
-atlas = declare_dependency(include_directories: include_directories('include'))
+atlas_dep = declare_dependency(include_directories: include_directories('include'))
 
 test_sources = files('tests/main.cpp', 'tests/option.cpp',
   'tests/result.cpp', 'tests/impl.cpp', 'tests/string_view.cpp',
