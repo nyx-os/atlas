@@ -1,7 +1,7 @@
 #include <atlas/option.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("Option") {
   TEST_CASE("Some") {

@@ -5,8 +5,8 @@
 #include <ostream>
 #include <vector>
 
-using namespace Atlas;
-using namespace Atlas::Formats;
+using namespace atlas;
+using namespace atlas::Formats;
 
 TEST_SUITE("Elf file") {
   const char *file_path = "tests/test.elf";

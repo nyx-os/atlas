@@ -4,7 +4,7 @@
 // This code is mostly adapted from
 // https://github.com/managarm/frigg/blob/master/include/frg/tuple.hpp
 
-namespace Atlas {
+namespace atlas {
 
 template <typename... Ts> struct TupleStorage_;
 
@@ -96,4 +96,4 @@ template <> class Tuple<> {};
 static_assert(Tuple<int, int>{10, 0}.get<0>() == 10);
 static_assert(Tuple<int, int>{10, 0}.get<1>() == 0);
 
-} // namespace Atlas
+} // namespace atlas

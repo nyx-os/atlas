@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <cstdint>
 
-namespace Atlas::Io {
+namespace atlas::io {
 
 enum class Endianness {
   Big,
@@ -65,4 +65,4 @@ static_assert(to_bytes<uint16_t, Endianness::Little>(0x1234) ==
 static_assert(to_bytes<uint16_t, Endianness::Big>(0x1234) ==
               Array<uint8_t, 2>{0x12, 0x34});
 
-} // namespace Atlas::Io
+} // namespace atlas::io

@@ -2,7 +2,7 @@
 #include "string.hpp"
 #include "string_view.hpp"
 
-namespace Atlas {
+namespace atlas {
 
 /*
     MurmurHash2a, by Austin Appleby
@@ -79,4 +79,4 @@ template <> struct Hash<const char *> {
   }
 };
 
-} // namespace Atlas
+} // namespace atlas

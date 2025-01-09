@@ -4,7 +4,7 @@
 #include <memory>
 #include <utility>
 
-namespace Atlas {
+namespace atlas {
 template <typename T, Allocator A = DefaultAllocator> struct Box {
 
   constexpr Box(T *ptr, A alloc = A()) : ptr_(ptr), alloc_(alloc) {}
@@ -58,4 +58,4 @@ private:
   A alloc_;
 };
 
-} // namespace Atlas
+} // namespace atlas

@@ -3,7 +3,7 @@
 #include "iter.hpp"
 #include <cstddef>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T> class Slice {
 public:
@@ -98,4 +98,4 @@ concept AsSlice = requires(T a) {
   { a.as_slice() } -> std::same_as<Slice<T1>>;
 };
 
-} // namespace Atlas
+} // namespace atlas

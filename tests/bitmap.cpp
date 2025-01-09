@@ -1,7 +1,7 @@
 #include <atlas/bitmap.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("Bitmap") {
   uint8_t *buf = new uint8_t[128];

@@ -5,7 +5,7 @@
 #include <source_location>
 #include <utility>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T> struct Ok {
 
@@ -87,4 +87,4 @@ private:
     __ret.unwrap();                                                            \
   })
 
-} // namespace Atlas
+} // namespace atlas

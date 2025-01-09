@@ -1,10 +1,10 @@
 #include <atlas/formats/dot.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 struct StringWriter {
-  Result<size_t, Io::Error> write(Slice<const char> buf) {
+  Result<size_t, io::Error> write(Slice<const char> buf) {
     output.append((const char *)buf.data(), buf.size());
     return Ok(buf.size());
   }

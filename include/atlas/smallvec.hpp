@@ -5,7 +5,7 @@
 #include <cstddef>
 #include <utility>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T, size_t N> class SmallVec {
 
@@ -60,4 +60,4 @@ private:
 
 template <typename... T> SmallVec(T...) -> SmallVec<T..., sizeof...(T)>;
 
-} // namespace Atlas
+} // namespace atlas

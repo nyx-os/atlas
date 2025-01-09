@@ -11,7 +11,7 @@
 #include <cstdint>
 
 // FIXME: Not sure how well this handles 32-bit
-namespace Atlas::Formats::Elf {
+namespace atlas::Formats::Elf {
 
 // -- Definitions --
 constexpr static size_t EI_MAG0 = 0;
@@ -223,14 +223,14 @@ struct ProgramHeader {
   uint64_t memsz;
   uint64_t align;
 
-  template <Io::Endianness E>
+  template <io::Endianness E>
   static constexpr Result<ProgramHeader, ParsingError>
   deserialize(Slice<uint8_t> data) {
     NativeProgramHeader phdr{};
 
     Array<uint8_t, sizeof(phdr)> buffer{};
 
-    Io::Cursor cursor(data);
+    io::Cursor cursor(data);
 
     if (cursor.read(buffer.as_slice()).unwrap() != sizeof(phdr)) {
       return Err(ParsingError::IoError);
@@ -238,14 +238,14 @@ struct ProgramHeader {
 
     memcpy(&phdr, buffer.data(), sizeof(phdr));
 
-    phdr.paddr = Io::to_endian<uint64_t, E>(phdr.paddr);
-    phdr.vaddr = Io::to_endian<uint64_t, E>(phdr.vaddr);
-    phdr.filesz = Io::to_endian<uint64_t, E>(phdr.filesz);
-    phdr.memsz = Io::to_endian<uint64_t, E>(phdr.memsz);
-    phdr.offset = Io::to_endian<uint64_t, E>(phdr.offset);
-    phdr.align = Io::to_endian<uint64_t, E>(phdr.align);
-    phdr.flags = Io::to_endian<uint32_t, E>(phdr.flags);
-    phdr.type = Io::to_endian<uint32_t, E>(phdr.type);
+    phdr.paddr = io::to_endian<uint64_t, E>(phdr.paddr);
+    phdr.vaddr = io::to_endian<uint64_t, E>(phdr.vaddr);
+    phdr.filesz = io::to_endian<uint64_t, E>(phdr.filesz);
+    phdr.memsz = io::to_endian<uint64_t, E>(phdr.memsz);
+    phdr.offset = io::to_endian<uint64_t, E>(phdr.offset);
+    phdr.align = io::to_endian<uint64_t, E>(phdr.align);
+    phdr.flags = io::to_endian<uint32_t, E>(phdr.flags);
+    phdr.type = io::to_endian<uint32_t, E>(phdr.type);
 
     ProgramHeader ret{};
 
@@ -298,13 +298,13 @@ struct SectionHeader {
     bool exec_instr;
   } flags;
 
-  template <Io::Endianness E>
+  template <io::Endianness E>
   static Result<SectionHeader, ParsingError> deserialize(Slice<uint8_t> data) {
     NativeSectionHeader shdr{};
 
     Array<uint8_t, sizeof(shdr)> buffer{};
 
-    Io::Cursor cursor(data);
+    io::Cursor cursor(data);
 
     if (cursor.read(buffer.as_slice()).unwrap() != sizeof(shdr)) {
       return Err(ParsingError::IoError);
@@ -312,16 +312,16 @@ struct SectionHeader {
 
     memcpy(&shdr, buffer.data(), sizeof(shdr));
 
-    shdr.addr = Io::to_endian<uint64_t, E>(shdr.addr);
-    shdr.offset = Io::to_endian<uint64_t, E>(shdr.offset);
-    shdr.size = Io::to_endian<uint64_t, E>(shdr.size);
-    shdr.link = Io::to_endian<uint32_t, E>(shdr.link);
-    shdr.info = Io::to_endian<uint32_t, E>(shdr.info);
-    shdr.addralign = Io::to_endian<uint64_t, E>(shdr.addralign);
-    shdr.entsize = Io::to_endian<uint64_t, E>(shdr.entsize);
-    shdr.flags = Io::to_endian<uint64_t, E>(shdr.flags);
-    shdr.type = Io::to_endian<uint32_t, E>(shdr.type);
-    shdr.name = Io::to_endian<uint32_t, E>(shdr.name);
+    shdr.addr = io::to_endian<uint64_t, E>(shdr.addr);
+    shdr.offset = io::to_endian<uint64_t, E>(shdr.offset);
+    shdr.size = io::to_endian<uint64_t, E>(shdr.size);
+    shdr.link = io::to_endian<uint32_t, E>(shdr.link);
+    shdr.info = io::to_endian<uint32_t, E>(shdr.info);
+    shdr.addralign = io::to_endian<uint64_t, E>(shdr.addralign);
+    shdr.entsize = io::to_endian<uint64_t, E>(shdr.entsize);
+    shdr.flags = io::to_endian<uint64_t, E>(shdr.flags);
+    shdr.type = io::to_endian<uint32_t, E>(shdr.type);
+    shdr.name = io::to_endian<uint32_t, E>(shdr.name);
 
     SectionHeader ret{};
 
@@ -358,13 +358,13 @@ struct Symbol {
   uint64_t value;
   uint64_t size;
 
-  template <Io::Endianness E>
+  template <io::Endianness E>
   static Result<Symbol, ParsingError> deserialize(Slice<uint8_t> data) {
     NativeSymbol sym{};
 
     Array<uint8_t, sizeof(sym)> buffer{};
 
-    Io::Cursor cursor(data);
+    io::Cursor cursor(data);
 
     if (cursor.read(buffer.as_slice()).unwrap() != sizeof(sym)) {
       return Err(ParsingError::IoError);
@@ -372,10 +372,10 @@ struct Symbol {
 
     memcpy(&sym, buffer.data(), sizeof(sym));
 
-    sym.name = Io::to_endian<uint32_t, E>(sym.name);
-    sym.shndx = Io::to_endian<uint16_t, E>(sym.shndx);
-    sym.value = Io::to_endian<uint64_t, E>(sym.value);
-    sym.size = Io::to_endian<uint64_t, E>(sym.size);
+    sym.name = io::to_endian<uint32_t, E>(sym.name);
+    sym.shndx = io::to_endian<uint16_t, E>(sym.shndx);
+    sym.value = io::to_endian<uint64_t, E>(sym.value);
+    sym.size = io::to_endian<uint64_t, E>(sym.size);
 
     Symbol ret{};
     ret.name = sym.name;
@@ -399,7 +399,7 @@ public:
 
     Array<uint8_t, EI_NIDENT> ident{};
 
-    auto cursor = Io::Cursor(data);
+    auto cursor = io::Cursor(data);
 
     if (!cursor.read(ident.as_slice())) {
       return Err(ParsingError::IoError);
@@ -423,8 +423,8 @@ public:
         TRYE(enum_cast<OsAbi>(ident[EI_OSABI]), ParsingError::InvalidValue);
 
     bool is_lsb = header.ident.ei_data == Data::Lsb;
-    using Io::Endianness::Big;
-    using Io::Endianness::Little;
+    using io::Endianness::Big;
+    using io::Endianness::Little;
 
     // This should probably use NativeHeader instead
     if (is_lsb) {
@@ -489,9 +489,9 @@ public:
 
       if (header_.ident.ei_data == Data::Lsb) {
         phdr =
-            ProgramHeader::deserialize<Io::Endianness::Little>(slice).unwrap();
+            ProgramHeader::deserialize<io::Endianness::Little>(slice).unwrap();
       } else {
-        phdr = ProgramHeader::deserialize<Io::Endianness::Big>(slice).unwrap();
+        phdr = ProgramHeader::deserialize<io::Endianness::Big>(slice).unwrap();
       }
 
       phoff += phentsize;
@@ -520,9 +520,9 @@ public:
 
       if (header_.ident.ei_data == Data::Lsb) {
         shdr =
-            SectionHeader::deserialize<Io::Endianness::Little>(slice).unwrap();
+            SectionHeader::deserialize<io::Endianness::Little>(slice).unwrap();
       } else {
-        shdr = SectionHeader::deserialize<Io::Endianness::Big>(slice).unwrap();
+        shdr = SectionHeader::deserialize<io::Endianness::Big>(slice).unwrap();
       }
 
       shoff += shentsize;
@@ -549,9 +549,9 @@ public:
       auto slice = cursor_.slice(shoff, shentsize);
 
       if (header_.ident.ei_data == Data::Lsb) {
-        sym = Symbol::deserialize<Io::Endianness::Little>(slice).unwrap();
+        sym = Symbol::deserialize<io::Endianness::Little>(slice).unwrap();
       } else {
-        sym = Symbol::deserialize<Io::Endianness::Big>(slice).unwrap();
+        sym = Symbol::deserialize<io::Endianness::Big>(slice).unwrap();
       }
 
       shoff += shentsize;
@@ -575,9 +575,9 @@ public:
 
     if (header_.ident.ei_data == Data::Lsb) {
       shstrtab =
-          SectionHeader::deserialize<Io::Endianness::Little>(shdr).unwrap();
+          SectionHeader::deserialize<io::Endianness::Little>(shdr).unwrap();
     } else {
-      shstrtab = SectionHeader::deserialize<Io::Endianness::Big>(shdr).unwrap();
+      shstrtab = SectionHeader::deserialize<io::Endianness::Big>(shdr).unwrap();
     }
 
     auto slice = cursor_.slice(shstrtab.offset + index, 1);
@@ -590,7 +590,7 @@ public:
   [[nodiscard]] const Header &header() const { return header_; }
 
 private:
-  Io::Cursor<Slice<uint8_t>> cursor_;
+  io::Cursor<Slice<uint8_t>> cursor_;
   Header header_;
 };
-} // namespace Atlas::Formats::Elf
+} // namespace atlas::Formats::Elf

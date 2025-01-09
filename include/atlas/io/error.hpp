@@ -1,5 +1,5 @@
 #pragma once
 
-namespace Atlas::Io {
+namespace atlas::io {
 enum Error { InvalidFile, OutOfBounds, EndOfFile };
 }

@@ -2,7 +2,7 @@
 #include <doctest.h>
 #include <utility>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("Box") {
   auto box = Box<int>::make(5);

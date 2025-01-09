@@ -2,7 +2,7 @@
 #include <atlas/vec.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("Vec") {
   Vec<int> vec{1, 2, 3, 4};

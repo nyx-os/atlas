@@ -2,7 +2,7 @@
 #include <doctest.h>
 #include <vector>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("Array") {
   Array<int, 4> a{1, 2, 3, 4};

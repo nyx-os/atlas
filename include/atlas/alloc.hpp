@@ -2,7 +2,7 @@
 #include <concepts>
 #include <cstddef>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename Alloc>
 concept Allocator = requires(Alloc a, size_t size) {
@@ -21,4 +21,4 @@ struct DefaultAllocator {
   }
 };
 
-} // namespace Atlas
+} // namespace atlas

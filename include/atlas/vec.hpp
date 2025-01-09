@@ -2,7 +2,7 @@
 #include "alloc.hpp"
 #include "slice.hpp"
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T, Allocator A = DefaultAllocator> class Vec {
 
@@ -125,4 +125,4 @@ private:
   A alloc_;
 };
 
-} // namespace Atlas
+} // namespace atlas

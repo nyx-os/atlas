@@ -2,7 +2,7 @@
 #include <atlas/smallvec.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("SmallVec") {
   SmallVec<int, 5> smallvec{1, 2, 3, 4};

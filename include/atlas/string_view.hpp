@@ -3,7 +3,7 @@
 #include "slice.hpp"
 #include <cstddef>
 
-namespace Atlas {
+namespace atlas {
 
 class StringView {
 
@@ -52,4 +52,4 @@ constexpr StringView operator""_sv(const char *str, size_t length) {
   return {str, length};
 }
 
-} // namespace Atlas
+} // namespace atlas

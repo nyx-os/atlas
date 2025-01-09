@@ -3,7 +3,7 @@
 #include "hash.hpp"
 #include "result.hpp"
 
-namespace Atlas {
+namespace atlas {
 
 /// An open addressing hash map
 template <typename K, typename V, Allocator A = DefaultAllocator,
@@ -161,4 +161,4 @@ private:
   }
 };
 
-} // namespace Atlas
+} // namespace atlas

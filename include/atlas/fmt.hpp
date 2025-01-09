@@ -4,7 +4,7 @@
 #include "string_view.hpp"
 #include "tuple.hpp"
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T>
 concept FormatSink = Container<T, char>;
@@ -166,7 +166,7 @@ template <typename... Ts> struct Formatter<FmtImpl<Ts...>> {
     }
 
     return [&]<size_t... I>(std::index_sequence<I...>) {
-      return ((index == I ? (::Atlas::format_value(fmt.values.template get<I>(),
+      return ((index == I ? (::atlas::format_value(fmt.values.template get<I>(),
                                                    opts, sink),
                              1)
                           : 0) +
@@ -252,8 +252,8 @@ template <typename... Ts> auto fmt(const char *fmt, Ts &&...values) {
 template <FormatSink Sink, typename... Ts>
 void format(Sink &sink, const char *fmt, Ts... values) {
   FormatOptions opts{};
-  auto f = ::Atlas::fmt(fmt, values...);
+  auto f = ::atlas::fmt(fmt, values...);
   format_value(f, opts, sink);
 }
 
-} // namespace Atlas
+} // namespace atlas

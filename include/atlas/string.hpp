@@ -5,7 +5,7 @@
 #include "option.hpp"
 #include "string_view.hpp"
 
-namespace Atlas {
+namespace atlas {
 
 class String {
 
@@ -170,4 +170,4 @@ private:
   };
 };
 
-} // namespace Atlas
+} // namespace atlas

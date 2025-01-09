@@ -3,8 +3,8 @@
 #include <atlas/vec.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
-using namespace Atlas::Io;
+using namespace atlas;
+using namespace atlas::io;
 
 TEST_SUITE("cursor") {
   Vec<uint8_t> vector{1, 2, 3};

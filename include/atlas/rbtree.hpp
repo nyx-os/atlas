@@ -5,7 +5,7 @@
 // This implementation of a red-black tree is mostly based on 'Introduction to
 // Algorithms' by Cormen et al.
 
-namespace Atlas {
+namespace atlas {
 
 enum class RBColor { Red, Black };
 
@@ -439,4 +439,4 @@ private:
   const RBTreeNode<T> nil_;
 };
 
-} // namespace Atlas
+} // namespace atlas

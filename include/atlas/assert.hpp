@@ -15,13 +15,13 @@
 
 #define ASSERT(condition)                                                      \
   (LIKELY(condition) ? static_cast<void>(0)                                    \
-                     : Atlas::panic("Assertion failed: " #condition            \
+                     : atlas::panic("Assertion failed: " #condition            \
                                     " at " __FILE__ ":" STRINGIFY(__LINE__)))
 
 #define ENSURE(condition, message)                                             \
   (LIKELY(condition)                                                           \
        ? static_cast<void>(0)                                                  \
-       : Atlas::panic(message " at " __FILE__ ":" STRINGIFY(__LINE__)))
+       : atlas::panic(message " at " __FILE__ ":" STRINGIFY(__LINE__)))
 #else
 #define ASSERT(condition) ((void)(condition))
 #define ENSURE(condition, message) ((void)(condition))

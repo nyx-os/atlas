@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <cstdint>
 
-namespace Atlas {
+namespace atlas {
 template <class T, size_t N> constexpr auto array_size(T (&)[N]) { return N; }
 
 template <std::integral T> constexpr T align_up(T value, T alignment) {
@@ -20,4 +20,4 @@ static_assert(align_down(4092, 4096) == 0);
 struct None {};
 
 constexpr inline auto NONE = None{};
-} // namespace Atlas
+} // namespace atlas

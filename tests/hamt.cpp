@@ -6,14 +6,14 @@
 #include <iostream>
 #include <unordered_map>
 
-using namespace Atlas;
+using namespace atlas;
 
 size_t allocated_mem = 0;
 size_t alloc_count = 0;
 
 std::unordered_map<uintptr_t, size_t> alloc_map;
 
-struct TracingAllocator : Atlas::DefaultAllocator {
+struct TracingAllocator : atlas::DefaultAllocator {
   void *allocate(size_t size) {
     auto ptr = DefaultAllocator::allocate(size);
     allocated_mem += size;

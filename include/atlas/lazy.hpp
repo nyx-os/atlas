@@ -3,7 +3,7 @@
 #include <new>
 #include <utility>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T> class Lazy {
 public:
@@ -35,4 +35,4 @@ private:
   char buffer_[sizeof(T)];
 };
 
-} // namespace Atlas
+} // namespace atlas

@@ -2,12 +2,12 @@
 #include "impl.hpp"
 #include <source_location>
 
-namespace Atlas {
+namespace atlas {
 
 [[noreturn]] inline void
 panic(const char *message,
       std::source_location location = std::source_location::current()) {
-  Impl::panic(message, location);
+  impl::panic(message, location);
   __builtin_unreachable();
 }
 
@@ -16,4 +16,4 @@ todo(std::source_location location = std::source_location::current()) {
   panic("Not implemented", location);
 }
 
-} // namespace Atlas
+} // namespace atlas

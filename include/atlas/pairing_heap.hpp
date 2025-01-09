@@ -2,7 +2,7 @@
 #include "option.hpp"
 #include <cstddef>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T> struct PairingHeapNode {
   T *child;
@@ -94,4 +94,4 @@ private:
   }
 };
 
-} // namespace Atlas
+} // namespace atlas

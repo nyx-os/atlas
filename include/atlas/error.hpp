@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Atlas {
+namespace atlas {
 
 enum Error {
   Unknown,
@@ -50,4 +50,4 @@ static inline constexpr char const *error_string(Error error) {
   return "Unknown";
 }
 
-} // namespace Atlas
+} // namespace atlas

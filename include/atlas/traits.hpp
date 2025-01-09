@@ -1,7 +1,7 @@
 #pragma once
 #include <concepts>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename F, typename T>
 concept Predicate = requires(F func, T a) {
@@ -23,4 +23,4 @@ concept Sortable = requires(T a, T b) {
   { a <=> b };
 };
 
-} // namespace Atlas
+} // namespace atlas

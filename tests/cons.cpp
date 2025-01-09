@@ -1,7 +1,7 @@
 #include <atlas/cons.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("Cons") {
   Cons<int, int> c(1, 2);

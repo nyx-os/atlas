@@ -5,7 +5,7 @@
 
 #include <cstddef>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T> struct ListNode {
   T *prev = nullptr;
@@ -181,4 +181,4 @@ private:
   T *head_ = nullptr;
   size_t length_ = 0;
 };
-} // namespace Atlas
+} // namespace atlas

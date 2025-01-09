@@ -1,7 +1,7 @@
 #include <atlas/hashmap.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("HashMap") {
   HashMap<int, int> hashmap;

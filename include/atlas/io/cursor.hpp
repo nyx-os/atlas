@@ -6,7 +6,7 @@
 #include <atlas/slice.hpp>
 #include <cstdint>
 
-namespace Atlas::Io {
+namespace atlas::io {
 
 template <typename T>
   requires(AsSlice<T, uint8_t>)
@@ -14,7 +14,7 @@ class Cursor {
 public:
   constexpr Cursor(T &data) : data_(data.as_slice()) {}
 
-  constexpr Result<uint64_t, Io::Error> seek(SeekFrom from) {
+  constexpr Result<uint64_t, io::Error> seek(SeekFrom from) {
     auto size = data_.size();
     uint64_t new_pos = 0;
 
@@ -41,7 +41,7 @@ public:
     return Ok(pos_);
   }
 
-  constexpr Result<size_t, Io::Error> read(Slice<uint8_t> &&buf) {
+  constexpr Result<size_t, io::Error> read(Slice<uint8_t> &&buf) {
     auto size = data_.size();
     auto buf_size = buf.size();
 
@@ -63,7 +63,7 @@ public:
     return Ok(bytes_to_read);
   }
 
-  template <typename U, Endianness E> constexpr Result<U, Io::Error> read() {
+  template <typename U, Endianness E> constexpr Result<U, io::Error> read() {
     Array<uint8_t, sizeof(U)> buf{};
     TRY(read(buf.as_slice()));
 
@@ -71,12 +71,12 @@ public:
   }
 
   template <typename U, Endianness E>
-  constexpr Result<size_t, Io::Error> write(U value) {
+  constexpr Result<size_t, io::Error> write(U value) {
     auto arr = to_bytes<U, E>(value);
     return write(arr.as_slice());
   }
 
-  constexpr Result<size_t, Io::Error> write(const Slice<uint8_t> &&buf) {
+  constexpr Result<size_t, io::Error> write(const Slice<uint8_t> &&buf) {
     auto size = data_.size();
     auto buf_size = buf.size();
 
@@ -112,4 +112,4 @@ private:
   uint64_t pos_{};
 };
 
-} // namespace Atlas::Io
+} // namespace atlas::io

@@ -4,7 +4,7 @@
 #include <atlas/string.hpp>
 #include <atlas/vec.hpp>
 
-namespace Atlas {
+namespace atlas {
 
 template <Allocator Alloc = DefaultAllocator> class Dot {
 public:
@@ -26,7 +26,7 @@ public:
     edges_.push(cons(from, to));
   }
 
-  template <Io::Write<const char> W> Result<None, Io::Error> output(W &writer) {
+  template <io::Write<const char> W> Result<None, io::Error> output(W &writer) {
     TRY(writer.write("digraph{"_sv.as_slice()));
 
     for (const auto &node : nodes_) {
@@ -122,4 +122,4 @@ private:
   Alloc alloc_;
 };
 
-} // namespace Atlas
+} // namespace atlas

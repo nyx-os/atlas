@@ -1,7 +1,7 @@
 #include <atlas/string_view.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("String view") {
 

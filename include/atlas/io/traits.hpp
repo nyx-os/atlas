@@ -4,16 +4,16 @@
 #include <atlas/result.hpp>
 #include <atlas/slice.hpp>
 
-namespace Atlas::Io {
+namespace atlas::io {
 
 template <typename T>
 concept Read = requires(T a, Slice<uint8_t> buf) {
-  { a.read(buf) } -> std::same_as<Result<size_t, Io::Error>>;
+  { a.read(buf) } -> std::same_as<Result<size_t, io::Error>>;
 };
 
 template <typename T, typename T1 = uint8_t>
 concept Write = requires(T a, const Slice<T1> buf) {
-  { a.write(buf) } -> std::same_as<Result<size_t, Io::Error>>;
+  { a.write(buf) } -> std::same_as<Result<size_t, io::Error>>;
 };
 
 //? Maybe move this elsewhere?
@@ -42,7 +42,7 @@ struct SeekFrom {
 
 template <typename T>
 concept Seek = requires(T a, SeekFrom from) {
-  { a.seek(from) } -> std::same_as<Result<uint64_t, Io::Error>>;
+  { a.seek(from) } -> std::same_as<Result<uint64_t, io::Error>>;
 };
 
-} // namespace Atlas::Io
+} // namespace atlas::io

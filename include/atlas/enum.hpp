@@ -3,7 +3,7 @@
 #include "option.hpp"
 #include <type_traits>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T>
 concept Enum = std::is_enum_v<T>;
@@ -29,4 +29,4 @@ constexpr inline Option<T> enum_cast(std::underlying_type_t<T> value) {
   return enum_cast(value, T::First, T::Last);
 }
 
-} // namespace Atlas
+} // namespace atlas

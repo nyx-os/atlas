@@ -2,7 +2,7 @@
 #include <atlas/pairing_heap.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 struct TestNode {
   PairingHeapNode<TestNode> hook;

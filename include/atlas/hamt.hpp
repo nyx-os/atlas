@@ -8,7 +8,7 @@
 #include <iostream>
 #endif
 
-namespace Atlas {
+namespace atlas {
 
 constexpr size_t BRANCHING_FACTOR = 32;
 
@@ -498,4 +498,4 @@ private:
 #endif
 };
 
-} // namespace Atlas
+} // namespace atlas

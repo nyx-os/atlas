@@ -4,7 +4,7 @@
 #include <memory>
 #include <utility>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T> class [[nodiscard]] Option {
 
@@ -135,4 +135,4 @@ private:
     __ret.unwrap();                                                            \
   })
 
-} // namespace Atlas
+} // namespace atlas

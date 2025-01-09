@@ -1,7 +1,7 @@
 #pragma once
 #include <cstddef>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename A, typename B> struct Cons {
   A car;
@@ -29,4 +29,4 @@ template <typename A, typename B> constexpr Cons<A, B> cons(A a, B b) {
   return Cons<A, B>(a, b);
 }
 
-} // namespace Atlas
+} // namespace atlas

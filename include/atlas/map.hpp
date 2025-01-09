@@ -7,7 +7,7 @@
 #include "string_view.hpp"
 #include "traits.hpp"
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T> struct MapKey {};
 
@@ -159,4 +159,4 @@ private:
   A alloc_;
 };
 
-} // namespace Atlas
+} // namespace atlas

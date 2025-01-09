@@ -1,7 +1,7 @@
 #include <atlas/arc.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("Arc") {
   auto ptr = Arc<int>::make(0);

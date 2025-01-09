@@ -2,7 +2,7 @@
 #include <doctest.h>
 #include <vector>
 
-using namespace Atlas;
+using namespace atlas;
 
 struct MyStruct {
   int val;

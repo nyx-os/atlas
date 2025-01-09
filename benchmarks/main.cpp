@@ -10,9 +10,9 @@
 #include <parallel_hashmap/phmap.h>
 #include <unordered_map>
 
-namespace Atlas::Impl {
+namespace atlas::impl {
 void panic(const char *msg) { throw std::runtime_error(msg); }
-} // namespace Atlas::Impl
+} // namespace atlas::impl
 
 // BENCHMARK(frigg_path);
 // BENCHMARK(atlas_path);
@@ -75,7 +75,7 @@ template <> struct MyHash<const char *> {
 };
 
 // void hamt_bench(benchmark::State &state) {
-//   Atlas::Hamt<size_t, size_t, Atlas::DefaultAllocator, MyHash<size_t>> hamt;
+//   atlas::Hamt<size_t, size_t, atlas::DefaultAllocator, MyHash<size_t>> hamt;
 
 //   for (auto _ : state) {
 //     for (size_t i = 0; i < (10UL * 1000); i++) {
@@ -91,7 +91,7 @@ template <> struct MyHash<const char *> {
 // }
 
 // void map_bench(benchmark::State &state) {
-//   Atlas::Map<size_t, size_t> map;
+//   atlas::Map<size_t, size_t> map;
 
 //   for (auto _ : state) {
 
@@ -108,7 +108,7 @@ template <> struct MyHash<const char *> {
 // }
 
 // void frg_map_bench(benchmark::State &state) {
-//   frg::hash_map<size_t, size_t, frg::hash<size_t>, Atlas::DefaultAllocator>
+//   frg::hash_map<size_t, size_t, frg::hash<size_t>, atlas::DefaultAllocator>
 //   map(
 //       frg::hash<size_t>{});
 
@@ -126,7 +126,7 @@ template <> struct MyHash<const char *> {
 // }
 
 // void hash_map_bench(benchmark::State &state) {
-//   Atlas::HashMap<size_t, size_t> map;
+//   atlas::HashMap<size_t, size_t> map;
 
 //   for (auto _ : state) {
 
@@ -151,7 +151,7 @@ template <> struct MyHash<const char *> {
 size_t allocated_mem = 0;
 size_t alloc_count = 0;
 
-struct TracingAllocator : Atlas::DefaultAllocator {
+struct TracingAllocator : atlas::DefaultAllocator {
   void *allocate(size_t size) {
     auto ptr = DefaultAllocator::allocate(size);
     allocated_mem += size;
@@ -168,7 +168,7 @@ struct TracingAllocator : Atlas::DefaultAllocator {
 template <typename T> struct AbseilHash {
   size_t operator()(T key, size_t gen = 0) const {
     if (gen)
-      return Atlas::Hash<T>()(key, gen);
+      return atlas::Hash<T>()(key, gen);
 
     return absl::Hash<T>()(key) ^ gen;
   }
@@ -188,7 +188,7 @@ void hamt_benchmark(benchmark::State &state) {
     words.push_back(new_str);
   }
 
-  Atlas::Hamt<const char *, size_t, Atlas::DefaultAllocator,
+  atlas::Hamt<const char *, size_t, atlas::DefaultAllocator,
               AbseilHash<const char *>>
       hamt;
 
@@ -217,7 +217,7 @@ void frg_map_benchmark(benchmark::State &state) {
   }
 
   frg::hash_map<const char *, size_t, AbseilHash<const char *>,
-                Atlas::DefaultAllocator>
+                atlas::DefaultAllocator>
       ctrie{AbseilHash<const char *>{}};
 
   for (auto _ : state) {
@@ -295,7 +295,7 @@ int main() {
   // TracingAllocator>
   //  ctrie{MyHash<const char *>{}};
 
-  Atlas::Hamt<const char *, size_t, TracingAllocator> hamt;
+  atlas::Hamt<const char *, size_t, TracingAllocator> hamt;
 
   std::fstream file("words.txt");
 

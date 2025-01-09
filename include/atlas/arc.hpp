@@ -5,7 +5,7 @@
 #include <cstddef>
 #include <memory>
 
-namespace Atlas {
+namespace atlas {
 template <typename T, Allocator A = DefaultAllocator> class Arc {
 public:
   constexpr explicit Arc(T *ptr, A alloc = A()) : ptr_(ptr), alloc_(alloc) {
@@ -84,4 +84,4 @@ private:
   std::atomic<size_t> refcount_data_;
   std::atomic<size_t> *refcount_ = nullptr;
 };
-} // namespace Atlas
+} // namespace atlas

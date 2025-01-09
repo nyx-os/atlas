@@ -2,7 +2,7 @@
 #include <doctest.h>
 #include <vector>
 
-using namespace Atlas;
+using namespace atlas;
 
 template <typename T = int> struct Test {
   Test(std::vector<T> a) : vec(std::move(a)) {}

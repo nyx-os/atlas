@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <initializer_list>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T, size_t N> class Array {
 
@@ -61,4 +61,4 @@ private:
   T data_[N];
 };
 
-} // namespace Atlas
+} // namespace atlas

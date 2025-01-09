@@ -1,7 +1,7 @@
 #include <atlas/map.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("Map") {
   Map<const char *, int> map;

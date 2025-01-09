@@ -4,7 +4,7 @@
 #include "traits.hpp"
 #include <utility>
 
-namespace Atlas {
+namespace atlas {
 
 template <typename T>
 concept IterNext = requires(T a) {
@@ -240,4 +240,4 @@ constexpr auto make_iterator(Iter begin, Iter end, RIter rbegin, RIter rend) {
       });
 }
 
-} // namespace Atlas
+} // namespace atlas

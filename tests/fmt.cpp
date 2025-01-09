@@ -4,16 +4,16 @@
 #include <atlas/vec.hpp>
 #include <doctest.h>
 
-using namespace Atlas;
+using namespace atlas;
 
 struct MyType {
   int x;
   int y;
 };
 
-template <> struct Atlas::Formatter<MyType> {
+template <> struct atlas::Formatter<MyType> {
   void format(auto &sink, FormatOptions opts, const MyType &value) {
-    Atlas::format(sink, "MyType({},{})", value.x, value.y);
+    atlas::format(sink, "MyType({},{})", value.x, value.y);
   }
 };
 

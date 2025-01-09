@@ -6,7 +6,7 @@
 #include <cstddef>
 #include <cstdint>
 
-namespace Atlas {
+namespace atlas {
 
 class Bitmap {
 public:
@@ -73,4 +73,4 @@ private:
   Slice<uint8_t> data_;
 };
 
-} // namespace Atlas
+} // namespace atlas

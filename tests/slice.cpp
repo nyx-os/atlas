@@ -2,7 +2,7 @@
 #include <doctest.h>
 #include <vector>
 
-using namespace Atlas;
+using namespace atlas;
 
 TEST_SUITE("Slice") {
   int data[] = {1, 2, 3, 4};
