@@ -25,6 +25,14 @@ TEST_SUITE("SmallVec") {
     CHECK_THROWS(smallvec.push(6));
   }
 
+  TEST_CASE("clear") {
+    SmallVec<int, 1> vec;
+    vec.push(10);
+    vec.clear();
+
+    CHECK_THROWS(vec[0]);
+  }
+
   TEST_CASE("pop") {
     SUBCASE("Pop on empty") {
       SmallVec<int, 1> empty;

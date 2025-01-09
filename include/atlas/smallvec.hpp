@@ -20,15 +20,17 @@ public:
       new (&data_[i++]) T(value);
   }
 
-  constexpr void push(T value) {
+  constexpr void push(const T& value) {
     ENSURE(size_ < N, "SmallVec is full");
 
     new (&data_[size_++]) T(value);
   }
 
-  constexpr void push_back(T &&value) {
-    ENSURE(size_ < N, "SmallVec is full");
-    new (&data_[size_++]) T(std::move(value));
+
+  constexpr void clear() {
+    for (size_t i = 0; i < size_; i++)
+      data_[i].~T();
+    size_ = 0;
   }
 
   constexpr T *begin() { return data_; }
