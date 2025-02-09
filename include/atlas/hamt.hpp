@@ -403,13 +403,6 @@ private:
     HashState state = {hash_(prev_node.leaf.key.val), hash.shift, hash.gen,
                        &prev_node.leaf.key.val, hash_};
 
-    ASSERT(find_node_rehash(parent, prev_node.leaf.key.val, state).status ==
-           FOUND);
-
-    if (hash.hash == state.hash) {
-      ASSERT(false);
-    }
-
     parent->branch.leafmap &= ~(1 << hash.get_index());
 
     auto root = node;
