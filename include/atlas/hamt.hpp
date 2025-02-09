@@ -407,14 +407,7 @@ private:
            FOUND);
 
     if (hash.hash == state.hash) {
-      hash.hash = (uint32_t)hash_(key, ++hash.gen);
-      hash.shift = 0;
-      hash.gen = 0;
-      hash.hasher_fn = hash_;
-      hash.key = &key;
-
-      insert_from_hash(key, value, hash);
-      return;
+      ASSERT(false);
     }
 
     parent->branch.leafmap &= ~(1 << hash.get_index());

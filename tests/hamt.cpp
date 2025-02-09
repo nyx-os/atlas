@@ -42,7 +42,7 @@ struct TracingAllocator : atlas::DefaultAllocator {
   }
 };
 
-TEST_SUITE("ctrie") {
+TEST_SUITE("hamt") {
   Hamt<size_t, size_t> hamt;
 
   TEST_CASE("insert/get") {
@@ -106,5 +106,25 @@ TEST_SUITE("ctrie") {
 
     CHECK(other.get(5460).is_none());
     CHECK_FALSE(other.get(1812219).is_some());
+  }
+
+  TEST_CASE("Collisions") {
+    struct FakeHash {
+      uint64_t operator()(uint64_t a, size_t gen = 0) const {
+        return gen ? a : 0;
+      }
+    };
+
+    Hamt<uint64_t, uint64_t, TracingAllocator, FakeHash> h;
+    h.insert(1, 1);
+    h.insert(2, 2);
+    h.insert(3, 3);
+    h.insert(4, 4);
+    CHECK(h.remove(1));
+    if (Option<uint64_t> v = h.get(4)) {
+      CHECK(v.unwrap() == 4);
+    } else {
+      CHECK(false);
+    }
   }
 }

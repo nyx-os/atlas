@@ -282,7 +282,7 @@ void phashmap_benchmark(benchmark::State &state) {
     }
   }
 }
-#if 0
+#if 1
 BENCHMARK(hamt_benchmark);
 BENCHMARK(frg_map_benchmark);
 BENCHMARK(absl_map_benchmark);
@@ -290,6 +290,7 @@ BENCHMARK(phashmap_benchmark);
 BENCHMARK_MAIN();
 #endif
 
+#if 0
 int main() {
   // frg::hash_map<const char *, size_t, MyHash<const char *>,
   // TracingAllocator>
@@ -329,3 +330,4 @@ int main() {
 
   return 0;
 }
+#endif
