@@ -3,7 +3,6 @@
 #include "option.hpp"
 #include "slice.hpp"
 #include <cstddef>
-#include <utility>
 
 namespace atlas {
 
@@ -20,12 +19,11 @@ public:
       new (&data_[i++]) T(value);
   }
 
-  constexpr void push(const T& value) {
+  constexpr void push(const T &value) {
     ENSURE(size_ < N, "SmallVec is full");
 
     new (&data_[size_++]) T(value);
   }
-
 
   constexpr void clear() {
     for (size_t i = 0; i < size_; i++)
